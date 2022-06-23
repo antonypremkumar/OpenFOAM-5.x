@@ -103,6 +103,9 @@ public:
         //- Construct given real and imaginary parts
         inline complex(const scalar Re, const scalar Im);
 
+        //- Construct from real component
+        inline explicit constexpr complex(const scalar r) noexcept;
+
         //- Construct from Istream
         complex(Istream&);
 

@@ -41,6 +41,12 @@ inline complex::complex(const scalar Re, const scalar Im)
 {}
 
 
+inline constexpr Foam::complex::complex(const scalar r) noexcept
+:
+    re(r),
+    im(0)
+{}
+
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
 inline scalar complex::Re() const

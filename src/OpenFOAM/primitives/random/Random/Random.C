@@ -194,5 +194,55 @@ Foam::scalar Foam::Random::GaussNormal()
     }
 }
 
+template<>
+Foam::scalar Foam::Random::GaussNormal()
+{
+    if (hasGaussSample_)
+    {
+        hasGaussSample_ = false;
+        return gaussSample_;
+    }
+
+    // Gaussian random number as per Knuth/Marsaglia.
+    // Input: two uniform random numbers, output: two Gaussian random numbers.
+    // cache one of the values for the next call.
+    scalar rsq, v1, v2;
+    do
+    {
+        v1 = 2*scalar01() - 1;
+        v2 = 2*scalar01() - 1;
+        rsq = sqr(v1) + sqr(v2);
+    } while (rsq >= 1 || rsq == 0);
+
+    const scalar fac = sqrt(-2*log(rsq)/rsq);
+
+    gaussSample_ = v1*fac;
+    hasGaussSample_ = true;
+
+    return v2*fac;
+}
+
+template<>
+Foam::label Foam::Random::position(const label& start, const label& end)
+{
+    #ifdef FULLDEBUG
+    if (start > end)
+    {
+        FatalErrorInFunction
+            << "start index " << start << " > end index " << end << nl
+            << abort(FatalError);
+    }
+    #endif
+
+    // Extend the upper sampling range by 1 and floor the result.
+    // Since the range is non-negative, can use integer truncation
+    // instead using floor().
+
+    const label val = start + label(scalar01()*(end - start + 1));
+
+    // Rare case when scalar01() returns exactly 1.000 and the truncated
+    // value would be out of range.
+    return min(val, end);
+}
 
 // ************************************************************************* //

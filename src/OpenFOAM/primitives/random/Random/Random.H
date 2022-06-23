@@ -53,6 +53,11 @@ class Random
 
         label Seed;
 
+        //- Is there a gaussian sample cached?
+        bool hasGaussSample_;
+
+        //- The cached gaussian sample value
+        scalar gaussSample_;
 
 public:
 
@@ -96,6 +101,15 @@ public:
         //- Return a normal Gaussian randon number
         //  with zero mean and unity variance N(0, 1)
         scalar GaussNormal();
+
+        //- Return a sample whose components are normally distributed
+        //- with zero mean and unity variance N(0,1)
+        template<class Type>
+        Type GaussNormal();
+
+        //- Return a sample on the interval [start,end]
+        template<class Type>
+        Type position(const Type& start, const Type& end);
 };
 
 

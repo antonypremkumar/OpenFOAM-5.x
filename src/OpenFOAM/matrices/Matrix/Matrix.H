@@ -106,6 +106,15 @@ public:
         inline static const mType& null();
 
 
+    // Iterators
+
+        //- Random access iterator for traversing a Matrix
+        typedef Type* iterator;
+
+        //- Random access iterator for traversing a Matrix
+        typedef const Type* const_iterator;
+
+
     // Constructors
 
         //- Null constructor.
@@ -287,6 +296,29 @@ public:
 
         //- Assignment of all elements to the given value
         void operator=(const Type&);
+
+    // Random Access Iterator (non-const)
+
+        //- Return an iterator to begin traversing a Matrix
+        inline iterator begin();
+
+        //- Return an iterator to end traversing a Matrix
+        inline iterator end();
+
+
+    // Random Access Iterator (const)
+
+        //- Return const_iterator to begin traversing a constant Matrix
+        inline const_iterator cbegin() const;
+
+        //- Return const_iterator to end traversing a constant Matrix
+        inline const_iterator cend() const;
+
+        //- Return const_iterator to begin traversing a constant Matrix
+        inline const_iterator begin() const;
+
+        //- Return const_iterator to end traversing a constant Matrix
+        inline const_iterator end() const;        
 
 
     // IOstream operators

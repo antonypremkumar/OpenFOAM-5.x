@@ -288,6 +288,40 @@ void Foam::Matrix<Form, Type>::shallowResize(const label m, const label n)
 }
 
 
+// * * * * * * * * * * * * * * * * * Iterators * * * * * * * * * * * * * * * //
+
+template<class Form, class Type>
+inline typename Foam::Matrix<Form, Type>::iterator
+Foam::Matrix<Form, Type>::begin()
+{
+    return v_;
+}
+
+
+template<class Form, class Type>
+inline typename Foam::Matrix<Form, Type>::iterator
+Foam::Matrix<Form, Type>::end()
+{
+    return v_ + (mRows_ * nCols_);
+}
+
+
+template<class Form, class Type>
+inline typename Foam::Matrix<Form, Type>::const_iterator
+Foam::Matrix<Form, Type>::cbegin() const
+{
+    return v_;
+}
+
+
+template<class Form, class Type>
+inline typename Foam::Matrix<Form, Type>::const_iterator
+Foam::Matrix<Form, Type>::end() const
+{
+    return v_ + (mRows_ * nCols_);
+}
+
+
 // * * * * * * * * * * * * * * * Member Operators  * * * * * * * * * * * * * //
 
 template<class Form, class Type>

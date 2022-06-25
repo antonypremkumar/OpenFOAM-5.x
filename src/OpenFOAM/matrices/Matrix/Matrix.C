@@ -278,6 +278,22 @@ Form Foam::Matrix<Form, Type>::T() const
 }
 
 
+template<class Form, class Type>
+Type Foam::Matrix<Form, Type>::trace() const
+{
+    const label len = Foam::min(mRows_, nCols_);
+
+    Type val = Zero;
+
+    for (label i=0; i < len; ++i)
+    {
+        val += (*this)(i, i);
+    }
+
+    return val;
+}
+
+
 // * * * * * * * * * * * * * * * Member Operators  * * * * * * * * * * * * * //
 
 template<class Form, class Type>

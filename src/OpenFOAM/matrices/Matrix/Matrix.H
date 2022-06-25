@@ -262,8 +262,13 @@ public:
             inline void shallowResize(const label m, const label n);
 
 
-        //- Return the transpose of the matrix
-        Form T() const;
+        // Operations
+
+            //- Return the transpose of the matrix
+            Form T() const;
+
+            //- Return the trace
+            Type trace() const;
 
 
     // Member operators

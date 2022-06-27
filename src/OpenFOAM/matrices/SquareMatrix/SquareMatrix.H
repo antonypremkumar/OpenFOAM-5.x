@@ -116,6 +116,11 @@ public:
             //- Resize the matrix without reallocating storage (unsafe)
             inline void shallowResize(const label m);
 
+        // Check
+
+            //= Return ture if the square matrix is effectively symmetric/Hermitian
+            inline bool symmetric() const;            
+
 
     // Member operators
 

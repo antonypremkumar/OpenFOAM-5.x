@@ -236,6 +236,26 @@ public:
                 const label nStart
             );
 
+            //- Return column or column's subset of Matrix
+            inline MatrixBlock<mType> subColumn
+            (
+                const label colIndex,
+                const label rowIndex = 0,
+                label len = -1
+            );
+
+            //- Return const column or column's subset of Matrix
+            //  Return entire column by its index: M.subColumn(a);
+            //  Return subset of a column starting from rowIndex: M.subColumn(a, b);
+            //  Return subset of a column starting from rowIndex with szRows elems:
+            //      M.subColumn(a, b, c);
+            inline ConstMatrixBlock<mType> subColumn
+            (
+                const label colIndex,
+                const label rowIndex = 0,
+                label len = -1
+            ) const;
+
 
         // Check
 

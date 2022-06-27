@@ -281,6 +281,56 @@ Foam::Matrix<Form, Type>::col
 
 
 template<class Form, class Type>
+inline Foam::ConstMatrixBlock<Foam::Matrix<Form, Type>>
+Foam::Matrix<Form, Type>::subColumn
+(
+    const label colIndex,
+    const label rowIndex,
+    label len
+) const
+{
+    if (len < 0)
+    {
+        len = mRows_ - rowIndex;
+    }
+
+    return ConstMatrixBlock<mType>
+    (
+        *this,
+        len, // rows
+        1,
+        rowIndex,
+        colIndex
+    );
+}
+
+
+template<class Form, class Type>
+inline Foam::MatrixBlock<Foam::Matrix<Form, Type>>
+Foam::Matrix<Form, Type>::subColumn
+(
+    const label colIndex,
+    const label rowIndex,
+    label len
+)
+{
+    if (len < 0)
+    {
+        len = mRows_ - rowIndex;
+    }
+
+    return MatrixBlock<mType>
+    (
+        *this,
+        len, // rows
+        1,
+        rowIndex,
+        colIndex
+    );
+}
+
+
+template<class Form, class Type>
 void Foam::Matrix<Form, Type>::shallowResize(const label m, const label n)
 {
     mRows_ = m;

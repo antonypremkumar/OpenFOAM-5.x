@@ -546,6 +546,32 @@ Form Foam::operator-(const Matrix<Form, Type>& A, const Matrix<Form, Type>& B)
 }
 
 
+//- Scalar multiplication of Matrix
+template<class Form, class Type>
+Form Foam::operator*(const Type& s, const Matrix<Form, Type>& mat)
+{
+    Form result(mat.sizes());
+
+    std::transform
+    (
+        mat.cbegin(),
+        mat.cend(),
+        result.begin(),
+        [&](const Type& val) { return s * val; }
+    );
+
+    return result;
+}
+
+
+//- Scalar multiplication of Matrix
+template<class Form, class Type>
+Form Foam::operator*(const Matrix<Form, Type>& mat, const Type& s)
+{
+    return s*mat;
+}
+
+
 template<class Form, class Type>
 Form Foam::operator*(const scalar s, const Matrix<Form, Type>& M)
 {

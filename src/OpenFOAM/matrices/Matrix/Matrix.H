@@ -403,6 +403,23 @@ Form operator*
     const scalar
 );
 
+//- Scalar multiplication of Matrix
+template<class Form, class Type>
+Form operator*
+(
+    const Type&,
+    const Matrix<Form, Type>&
+);
+
+
+//- Scalar multiplication of Matrix
+template<class Form, class Type>
+Form operator*
+(
+    const Matrix<Form, Type>&,
+    const Type&
+);
+
 template<class Form, class Type>
 Form operator/
 (

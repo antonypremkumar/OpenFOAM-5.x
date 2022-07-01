@@ -131,6 +131,9 @@ public:
         //  initializing all elements to the given value
         Matrix(const label m, const label n, const Type&);
 
+        //- Construct given number of rows/columns
+        inline explicit Matrix(const labelPair& dims);
+
         //- Copy constructor.
         Matrix(const mType&);
 
@@ -169,6 +172,9 @@ public:
 
             //- Return the number of elements in matrix (m*n)
             inline label size() const;
+
+            //- Return row/column sizes
+            inline labelPair sizes() const;
 
             //- Return element vector of the constant Matrix
             inline const Type* v() const;

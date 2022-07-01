@@ -44,6 +44,13 @@ clone() const
 }
 
 
+template<class Form, class Type>
+inline Foam::Matrix<Form, Type>::Matrix(const labelPair& dims)
+:
+    Matrix<Form, Type>(dims.first(), dims.second())
+{}
+
+
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
 template<class Form, class Type>
@@ -71,6 +78,13 @@ template<class Form, class Type>
 inline Foam::label Foam::Matrix<Form, Type>::size() const
 {
     return mRows_*nCols_;
+}
+
+
+template<class Form, class Type>
+inline Foam::labelPair Foam::Matrix<Form, Type>::sizes() const
+{
+    return labelPair(mRows_, nCols_);
 }
 
 

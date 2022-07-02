@@ -92,6 +92,16 @@ inline Foam::RectangularMatrix<Type>::RectangularMatrix
 template<class Type>
 inline Foam::RectangularMatrix<Type>::RectangularMatrix
 (
+    const labelPair& dims
+)
+:
+    RectangularMatrix<Type>(dims.first(), dims.second())
+{}
+
+
+template<class Type>
+inline Foam::RectangularMatrix<Type>::RectangularMatrix
+(
     const SquareMatrix<Type>& SM
 )
 :

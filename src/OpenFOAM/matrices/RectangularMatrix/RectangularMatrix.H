@@ -82,6 +82,9 @@ public:
         //  and value for all elements.
         inline RectangularMatrix(const label m, const label n, const Type&);
 
+        //- Construct given number of rows/columns by using a label pair
+        inline explicit RectangularMatrix(const labelPair& dims);
+
         //- Construct as copy of a square matrix
         inline RectangularMatrix(const SquareMatrix<Type>&);
 
